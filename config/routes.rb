@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 root to: 'homes#top'
   get '/about' => 'homes#about'
 
-　#以下は顧客
+#以下は顧客
   scope module: 'public' do
 
 
@@ -32,7 +32,7 @@ root to: 'homes#top'
   end
 
 
-　#以下は管理者
+#以下は管理者
   devise_for :admins, only: [:sessions], :controllers => {
     :sessions => 'admin/sessions'
   }
