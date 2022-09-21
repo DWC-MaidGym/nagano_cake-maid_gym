@@ -33,6 +33,7 @@ root to: 'homes#top'
 
 
 #以下は管理者
+  get '/admin' => 'admin#homes#top'
   devise_for :admins, only: [:sessions], :controllers => {
     :sessions => 'admin/sessions'
   }
