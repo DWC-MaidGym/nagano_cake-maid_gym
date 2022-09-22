@@ -2,17 +2,20 @@ Rails.application.routes.draw do
 root to: 'homes#top'
   get '/about' => 'homes#about'
 
+
 #以下は顧客
   scope module: 'public' do
 
+
+    devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+   }
 
     resources :customers, only: [:show, :edit, :update] do
       get 'confirm'
       patch 'withdraw'
     end
-
-
-    devise_for :customers, only: [:sessions, :registrations]
 
 
     resources :cart_products, only: [:index, :update, :destroy, :create] do
@@ -32,12 +35,14 @@ root to: 'homes#top'
   end
 
 
+
 #以下は管理者
-  devise_for :admins, only: [:sessions], :controllers => {
+  devise_for :admin, only: [:sessions, :password], :controllers => {
     :sessions => 'admin/sessions'
   }
 
   namespace :admin do
+    get '' => 'homes#top'
 
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
 
