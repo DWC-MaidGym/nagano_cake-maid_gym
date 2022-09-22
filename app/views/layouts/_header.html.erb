@@ -1,0 +1,15 @@
+<%= link_to root_path do %>
+  <%= image_tag %>
+<% end %>
+<% if user_signed_in? %>
+  <p>ようこそ、<%= current_user.name %>さん！</p>
+  <%= link_to "マイページ" %>
+  <%= link_to "商品一覧" %>
+  <%= link_to "カート" %>
+  <%= link_to "ログアウト" %>
+<% else %>
+  <%= link_to "About", %>
+  <%= link_to "商品一覧", %>
+  <%= link_to "新規登録", %>
+  <%= link_to "ログイン", %>
+<% end %>
