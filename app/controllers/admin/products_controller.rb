@@ -1,8 +1,9 @@
 class Admin::ProductsController < ApplicationController
-    def new
+
+  def new
         @product = Product.new
         @genres = Genre.all
-    end
+  end
     
     def create
         @product = Product.new(product_params)
@@ -23,4 +24,5 @@ class Admin::ProductsController < ApplicationController
     params.require(:product).permit(:image_id, :name, :introduction, :genre, :price, :is_active)
   end
     
+
 end
