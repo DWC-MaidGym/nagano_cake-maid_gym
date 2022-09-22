@@ -5,18 +5,17 @@ class Admin::ProductsController < ApplicationController
         @genres = Genre.all
   end
     
-    def create
-        @product = Product.new(product_params)
-        @product.admin_id = current_admin.id
-        if product.save
-            @product = Product.new
-            render 'new'
-            #仮設定
-        else
-            @product = Product.new
-            render 'new'
-        end
-    end
+
+  def create
+      @product = Product.new(product_params)
+      @product.admin_id = current_admin.id
+    if product.save
+      @product = Product.new
+      render 'new'
+      #仮設定
+    else
+      @product = Product.new
+      render 'new'
     
      private
 
