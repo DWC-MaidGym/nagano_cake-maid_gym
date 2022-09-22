@@ -21,6 +21,8 @@ root to: 'homes#top'
     resources :cart_products, only: [:index, :update, :destroy, :create] do
       delete 'all_destroy'
     end
+    
+    resources :products, only: [:index, :show] 
 
 
     resources :orders, only: [:index, :show, :create, :new] do
