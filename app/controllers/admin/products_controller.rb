@@ -16,6 +16,7 @@ class Admin::ProductsController < ApplicationController
     else
       @product = Product.new
       render 'new'
+    end
     
      private
 
