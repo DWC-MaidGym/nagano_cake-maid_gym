@@ -17,6 +17,10 @@ class Admin::ProductsController < ApplicationController
         end
     end
     
-    
+     private
+
+  def product_params
+    params.require(:product).permit(:image_id, :name, :introduction, :genre, :price, :is_active)
+  end
     
 end
