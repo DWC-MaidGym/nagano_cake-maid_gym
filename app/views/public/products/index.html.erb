@@ -1,0 +1,13 @@
+<h3>商品一覧</h3>
+<table>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <% if product.is_active? %>
+        <td><%= link_to product.name,product_path(product.id) %></td>
+        <td><%= product.price %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

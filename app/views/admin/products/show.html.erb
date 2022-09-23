@@ -1,0 +1,12 @@
+<h1>商品説明</h1>
+<p><%= @product.name %></p>
+<p><%= @product.introduction %></p>
+<p><%= @product.genre.name %></p>
+<p><%= @product.price %></p>
+<% if @product.is_active? %>
+<p><%= "販売中" %></p>
+<% else %>
+<p><%= "販売停止中" %></p>
+<% end %>
+
+<p>編集</p>
