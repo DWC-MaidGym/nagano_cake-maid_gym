@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= @order_products.each do |order_product| %>
+    <% @order_products.each do |order_product| %>
       <tr>
         <td><%= order_product.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= order_product.name %></td>
