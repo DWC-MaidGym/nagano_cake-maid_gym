@@ -1,19 +1,23 @@
 <div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div>
-      <h2>ジャンル一覧・追加</h2>
-
-        <%= form_with model: @genre_new, url: admin_genres_path, local:true do |f| %>
-          ジャンル名
-          <div class="form-group">
-            <%= f.text_field :name, class: 'form-control book_title' %>
-          </div>
-          <div class="form-group">
-            <%= f.submit '登録', class: 'btn btn-success' %>
-          </div>
-        <% end %>
+    <h2>ジャンル一覧・追加</h2>
+  <div class='row form-inline'>
+    ジャンル名
+    <div class='col-m-7'>
+      <%= form_with model: @genre_new, url: admin_genres_path, local:true do |f| %>
+        <div class="form-group col">
+          <%= f.text_field :name, class: 'form-control book_title' %>
+        </div>
     </div>
-    <div>
+    <div class='col-px-4'>
+      <div class="form-group">
+        <%= f.submit '登録', class: 'btn btn-success' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-px-4 mt-4'>
+     <div class='box'>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -29,6 +33,7 @@
             </tr>
           <% end %>
       </table>
+     </div>
     </div>
   </div>
 </div>
