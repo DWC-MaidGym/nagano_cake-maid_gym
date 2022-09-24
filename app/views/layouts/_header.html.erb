@@ -1,15 +1,15 @@
 <%= link_to root_path do %>
-  <%= image_tag %>
+  <h1><strong>LOGO</strong></h1>
 <% end %>
 <% if user_signed_in? %>
-  <p>ようこそ、<%= current_user.name %>さん！</p>
-  <%= link_to "マイページ" %>
-  <%= link_to "商品一覧" %>
-  <%= link_to "カート" %>
-  <%= link_to "ログアウト" %>
+  <p>ようこそ、<%= current_customer.name %>さん！</p>
+  <%= link_to "マイページ", customer_path(current_customer) %>
+  <%= link_to "商品一覧", products_path %>
+  <%= link_to "カート", cart_products_path %>
+  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
 <% else %>
-  <%= link_to "About", %>
-  <%= link_to "商品一覧", %>
-  <%= link_to "新規登録", %>
-  <%= link_to "ログイン", %>
+  <%= link_to "About", about_path %>
+  <%= link_to "商品一覧", products_path %>
+  <%= link_to "新規登録", new_customer_registration_path %>
+  <%= link_to "ログイン", new_customer_session_path %>
 <% end %>
