@@ -17,7 +17,8 @@
               <td><%= order_product.created_at.strftime('%Y/%m/%d') %></td>
               <td><%= order_product.name %></td>
               <td><%= order_product.amount %></td>
-              <td><%= order_product.order_status %></td>
+              <td><%= order_product.order_status %>
+              </td>
             </tr>
           <% end %>
           <%= paginate @order_products %>
