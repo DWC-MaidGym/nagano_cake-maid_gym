@@ -21,7 +21,11 @@
               <% end %>
             </td>
             <td><%= customer.email %></td>
-            <td><%= customer.is_deleted %></td>
+              <% if customer.is_deleted == false %>
+                <td>有効</td>
+              <% else %>
+                <td>退会</td>
+              <% end %>
           <% end %>
           </tr>
         </tbody>
