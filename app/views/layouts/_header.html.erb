@@ -1,7 +1,7 @@
 <%= link_to root_path do %>
   <h1><strong>LOGO</strong></h1>
 <% end %>
-<% if user_signed_in? %>
+<% if customer_signed_in? %>
   <p>ようこそ、<%= current_customer.name %>さん！</p>
   <%= link_to "マイページ", customer_path(current_customer) %>
   <%= link_to "商品一覧", products_path %>

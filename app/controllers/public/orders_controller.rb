@@ -40,12 +40,12 @@ class Public::OrdersController < ApplicationController
 
     if @order.save
       @cart_products.each do |cart|
-      order_detail = OrderProduct.new
-      order_detail.product_id = cart.item_id
-      order_detail.order_id = @order.id
-      order_detail.quantity = cart.quantity
-      order_detail.price = cart.item.price
-      order_detail.save
+      order_product = OrderProduct.new
+      order_product.product_id = cart.product_id
+      order_product.order_id = @order.id
+      order_product.amount = cart.amount
+      order_product.price = cart.product.add_tax_price
+      order_product.save
     end
     
     @cart_items.destroy_all
@@ -57,6 +57,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
+    @orders = current_customer.orders.all
   end
   
   def show
