@@ -2,7 +2,6 @@ class Public::CartProductsController < ApplicationController
   
   def index
     @cart_products = current_customer.products
-    redirect_to
   end
   
   def update
