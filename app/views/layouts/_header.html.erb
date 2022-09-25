@@ -1,4 +1,20 @@
-    <% if admin_signed_in? %>
+<%= link_to root_path do %>
+  <h1><strong>LOGO</strong></h1>
+<% end %>
+<% if customer_signed_in? %>
+  <p>ようこそ、<%= current_customer.name %>さん！</p>
+  <%= link_to "マイページ", customer_path(current_customer) %>
+  <%= link_to "商品一覧", products_path %>
+  <%= link_to "カート", cart_products_path %>
+  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+<% else %>
+  <%= link_to "About", about_path %>
+  <%= link_to "商品一覧", products_path %>
+  <%= link_to "新規登録", new_customer_registration_path %>
+  <%= link_to "ログイン", new_customer_session_path %>
+<% end %>
+
+<% if admin_signed_in? %>
       <li>
         <%= link_to "商品一覧", admin_products_path %>
       </li>
@@ -16,7 +32,4 @@
       </li>
     <% else %>
       <%= link_to "About", about_path %>
-  <%= link_to "商品一覧", products_path %>
-  <%= link_to "新規登録", new_customer_registration_path %>
-  <%= link_to "ログイン", new_customer_session_path %>
-<% end %>
+ <% end %>

@@ -18,11 +18,9 @@ root to: 'homes#top'
     end
 
 
-    resources :cart_products, only: [:index, :update, :destroy, :create] do
-      delete 'all_destroy'
-    end
-    
-    resources :products, only: [:index, :show] 
+    resources :cart_products, only: [:index, :update, :destroy, :create]
+    delete '/cart_products/all_destroy' => 'cart_products#all_destroy', as: 'cart_products_all_destroy'
+
 
 
     resources :orders, only: [:index, :show, :create, :new] do
