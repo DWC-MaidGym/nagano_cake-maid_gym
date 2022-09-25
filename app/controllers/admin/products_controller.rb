@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-  before_action :authenticate_admin!
+  layout "admin_application"
 
   def new
         @product = Product.new
@@ -24,7 +24,25 @@ class Admin::ProductsController < ApplicationController
   def index
     @products = Product.all
   end
+<<<<<<< HEAD
 
+=======
+  
+  def edit
+    @product = Product.find(params[:id])
+    @genres = Genre.all
+  end
+  
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to admin_product_path(@product)
+    else
+      render :edit
+    end
+  end
+  
+>>>>>>> origin/develop
   private
 
   def product_params
