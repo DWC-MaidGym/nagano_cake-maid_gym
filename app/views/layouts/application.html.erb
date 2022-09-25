@@ -23,11 +23,6 @@
         <%= link_to "ログイン", new_customer_session_path %>
       </li>
     <% end %>
-        <% if admin_signed_in? %>
-      <li>
-        <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-    <% end %>
   </header>
     <%= yield %>
   </body>

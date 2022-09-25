@@ -1,0 +1,26 @@
+<h1>商品編集</h1>
+<%= form_with model: @product, url: admin_product_path,method: :patch, local:true do |f| %>
+<p>商品画像</p>
+<%= f.label :image %>
+<%= f.file_field :image_id, accept: "image/*" %><br>
+<p>商品名</p>
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+<p>商品説明</p>
+<%= f.label :introduction %>
+<%= f.text_area :introduction %><br>
+<p>ジャンル</p>
+<%= f.label :genre %>
+<%= f.collection_select :genre_id, @genres, :id, :name, {prompt: 'ジャンルを選択してください'} %><br>
+<p>税抜価格</p>
+<%= f.label :price %>
+<%= f.text_field :price %><br>
+<p>販売ステータス</p>
+<%= f.label :sale_status, '販売中', value: true %>
+<%= f.radio_button :is_active, true %>
+<%= f.label :sale_status, '販売停止中', value: false %>
+<%= f.radio_button :is_active, false %>
+
+<%= f.submit "登録" %>
+
+<% end %>

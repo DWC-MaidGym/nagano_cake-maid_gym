@@ -1,12 +1,21 @@
 <h1>商品説明</h1>
+<%= image_tag @product.get_image_id, size: '50x50' %>
+<p>商品名</p>
 <p><%= @product.name %></p>
+<p>商品説明</p>
 <p><%= @product.introduction %></p>
+<p>ジャンル</p>
 <p><%= @product.genre.name %></p>
+<p>税抜価格(税込価格）</p>
 <p><%= @product.price %></p>
+
+<p>(
+<%= @product.add_tax_price %>
+)</p>
 <% if @product.is_active? %>
 <p><%= "販売中" %></p>
 <% else %>
 <p><%= "販売停止中" %></p>
 <% end %>
 
-<p>編集</p>
+<%= link_to "編集", edit_admin_product_path(@product) %>
