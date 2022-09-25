@@ -1,3 +1,8 @@
 class Address < ApplicationRecord
-    has_many :customers, dependent: :destroy
+    belongs_to :customer, dependent: :destroy
+    
+    def address_display
+      '〒' + post_code + ' ' + address + ' ' + name 
+    end
+    
 end
