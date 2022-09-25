@@ -1,2 +1,5 @@
 <h1>新規商品登録</h1>
-<%= render 'form', product: @product, genres: @genres %>
+<%= form_with model: @product, url: admin_products_path, local:true do |f| %>
+<%= render 'form', product: @product, genres: @genres, f: f %>
+<%= f.submit "新規登録" %>
+<% end %>
