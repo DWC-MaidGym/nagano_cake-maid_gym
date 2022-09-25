@@ -7,30 +7,21 @@
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head><html>
+  <head>
+    <title>NaganoCakeMaidGym</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-    <% if admin_signed_in? %>
-      <li>
-        <%= link_to "商品一覧", admin_products_path %>
-      </li>
-      <li>
-        <%= link_to "会員一覧", admin_customers_path %>
-      </li>
-      <li>
-        <%= link_to "注文履歴一覧", admin_path %>
-      </li>
-      <li>
-        <%= link_to "ジャンル", admin_genres_path %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-    <% else %>
-    <p>public側合わせる</p>
-    <% end %>
-  </header>
+      <%= render "layouts/header" %>
+    </header>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
