@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_action :authenticate_admin!
 
   def new
         @product = Product.new
@@ -15,15 +16,15 @@ class Admin::ProductsController < ApplicationController
       render :new
     end
   end
-  
+
   def show
     @product = Product.find(params[:id])
   end
-  
+
   def index
     @products = Product.all
   end
-  
+
   private
 
   def product_params

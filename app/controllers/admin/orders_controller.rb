@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_admin!
 
   def show
     @order = Order.find(params[:id])
@@ -14,7 +15,7 @@ class OrdersController < ApplicationController
     # [:order][:status]→orderの中のstatus
     if params[:order][:status] == "入金確認"
       # making_statusを製作待ちに更新
-      @order.order_product.update(making_status: 1)
+      @order.order_product.update(order_status: 1)
     end
 
     redirect_to request.referer
