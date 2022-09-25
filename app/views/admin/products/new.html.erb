@@ -1,26 +1,2 @@
 <h1>新規商品登録</h1>
-<%= form_with model: @product, url: admin_products_path, local:true do |f| %>
-
-<%= f.label :image %>
-<%= f.file_field :image_id, accept: "image/*" %><br>
-
-<%= f.label :name %>
-<%= f.text_field :name %><br>
-
-<%= f.label :introduction %>
-<%= f.text_area :introduction %><br>
-
-<%= f.label :genre %>
-<%= f.collection_select :genre_id, @genres, :id, :name, {prompt: 'ジャンルを選択してください'} %><br>
-
-<%= f.label :price %>
-<%= f.text_field :price %><br>
-
-<%= f.label :sale_status, '販売中', value: true %>
-<%= f.radio_button :is_active, true %>
-<%= f.label :sale_status, '販売停止中', value: false %>
-<%= f.radio_button :is_active, false %>
-
-<%= f.submit "保存" %>
-
-<% end %>
+<%= render 'form', product: @product, genres: @genres %>

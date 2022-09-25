@@ -11,6 +11,7 @@
 
   <body>
     <header>
+
       <%= render "layouts/header" %>
       <% if customer_signed_in? %>
         <li>
@@ -29,7 +30,11 @@
           <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
        </li>
       <% end %>
-     </header>
+    </header>
+
+
+    
+  </header>
 
     <%= yield %>
     <%= render 'layouts/footer' %>

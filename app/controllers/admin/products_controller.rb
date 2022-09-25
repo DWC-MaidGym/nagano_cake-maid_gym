@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  layout "admin_application"
 
   def new
         @product = Product.new
@@ -22,6 +23,20 @@ class Admin::ProductsController < ApplicationController
   
   def index
     @products = Product.all
+  end
+  
+  def edit
+    @product = Product.find(params[:id])
+    @genres = Genre.all
+  end
+  
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to admin_product_path(@product)
+    else
+      render :edit
+    end
   end
   
   private
