@@ -22,6 +22,7 @@ root to: 'homes#top'
     delete '/cart_products/all_destroy' => 'cart_products#all_destroy', as: 'cart_products_all_destroy'
 
 
+
     resources :orders, only: [:index, :show, :create, :new] do
       post 'confirm'
       get 'complete'

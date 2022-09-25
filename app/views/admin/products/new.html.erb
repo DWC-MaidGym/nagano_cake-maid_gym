@@ -1,5 +1,5 @@
 <h1>新規商品登録</h1>
-<%= form_with model: @product, local:true do |f| %>
+<%= form_with model: @product, url: admin_products_path, local:true do |f| %>
 
 <%= f.label :image %>
 <%= f.file_field :image_id, accept: "image/*" %><br>
@@ -11,16 +11,15 @@
 <%= f.text_area :introduction %><br>
 
 <%= f.label :genre %>
-<%= f.collection_select :genre_id, @genre.all, :id, :name, {prompt: 'mcを選択してください'} %><br>
-<!-- f.collection_select(オブジェクト名, メソッド名, 要素の配列, value属性の項目, テキストの項目 [, オプション or HTML属性 or イベント属性])  -->
+<%= f.collection_select :genre_id, @genres, :id, :name, {prompt: 'ジャンルを選択してください'} %><br>
 
 <%= f.label :price %>
 <%= f.text_field :price %><br>
 
-<%= f.label :sale_status, '販売中', value: 1 %>
-<%= f.radio_button :is_active, '1' %>
-<%= f.label :sale_status, '販売停止中', value: 0 %>
-<%= f.radio_button :is_active, '0' %>
+<%= f.label :sale_status, '販売中', value: true %>
+<%= f.radio_button :is_active, true %>
+<%= f.label :sale_status, '販売停止中', value: false %>
+<%= f.radio_button :is_active, false %>
 
 <%= f.submit "保存" %>
 
