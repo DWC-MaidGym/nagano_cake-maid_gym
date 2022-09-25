@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="col-px-9">
-      <h2><%= @customer.name %>さんの会員詳細</h2>
+      <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
       <table>
           <tr>
             <th>会委員ID</th>
@@ -9,13 +9,13 @@
           </tr>
           <tr>
             <th>氏名</th>
-            <td><%= @customer.first_name %></td>
             <td><%= @customer.last_name %></td>
+            <td><%= @customer.first_name %></td>
           </tr>
           <tr>
             <th>フリガナ</th>
-            <td><%= @customer.first_name_kana %></td>
             <td><%= @customer.last_name_kana %></td>
+            <td><%= @customer.first_name_kana %></td>
           </tr>
           <tr>
             <th>郵便番号</th>

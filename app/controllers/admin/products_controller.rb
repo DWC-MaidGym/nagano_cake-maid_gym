@@ -24,9 +24,6 @@ class Admin::ProductsController < ApplicationController
   def index
     @products = Product.all
   end
-<<<<<<< HEAD
-
-=======
   
   def edit
     @product = Product.find(params[:id])
@@ -42,7 +39,6 @@ class Admin::ProductsController < ApplicationController
     end
   end
   
->>>>>>> origin/develop
   private
 
   def product_params

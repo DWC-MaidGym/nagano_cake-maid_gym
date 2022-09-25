@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
+  layout "admin_application"
 
   def index
     @customers = Customer.page(params[:page])
@@ -22,6 +23,6 @@ class Admin::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :addresses, :telephone_number, :email, :is_deleted)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :addresses, :telephone_number, :email, :is_deleted)
   end
 end
