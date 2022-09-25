@@ -101,10 +101,12 @@ ja:
       model_invalid: 'バリデーションに失敗しました: %{errors}'
       not_a_number: は数値で入力してください
       not_an_integer: は整数で入力してください
+      not_saved: は保存されませんでした
       odd: は奇数にしてください
       other_than: は%{count}以外の値にしてください
       present: は入力しないでください
       required: を入力してください
+      signed_out: ログアウト
       taken: はすでに存在します
       too_long: は%{count}文字以内で入力してください
       too_short: は%{count}文字以上で入力してください
