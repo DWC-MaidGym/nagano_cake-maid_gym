@@ -1,14 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-1">
-      <h2 class="my-4">注文履歴詳細</h2>
+      <h3 class="ml-5", style="background-color:#eee; width:255px; margin:30px 0 30px 100px;"><b>注文履歴詳細</b></h3>
     </div>
   </div>
   <div class="col-6">
     <table class="order-customer">
       <tr>
         <th>購入者</th>
-        <td><%= @customer.name %></td>
+        <td>
+          <%= link_to customer_path(@customer.id) do %>
+            <%= @customer.full_name %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th>注文日</th>
@@ -48,7 +52,7 @@
               <% @total +=  order_detail.price * order_detail.amount %>
               <td>
                 <div>
-                  <%= form_with(model:[@order, order_product], url: admin_order_order_detail_path(@order,order_product), local: true) do |f| %>
+                  <%= form_with(model:[@order, order_product], url: admin_order_path(@order,order_product), local: true) do |f| %>
                     <%= f.select :order_status, options_for_select([['着手不可'],['製作待ち'],['製作中'],['製作完了']], {:selected => order_product.order_status}) %>
                     <%= f.submit "更新", class:"btn btn-success" %>
                   <% end %>
