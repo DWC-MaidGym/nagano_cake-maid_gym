@@ -15,6 +15,9 @@ root to: 'homes#top'
     resources :customers, only: [:show, :edit, :update] do
       get 'confirm'
       patch 'withdraw'
+      patch 'edit'
+      
+    
     end
 
 
@@ -31,7 +34,7 @@ root to: 'homes#top'
     resources :products, only: [:index, :show]
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-
+  
   end
 
 
