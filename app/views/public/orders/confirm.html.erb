@@ -16,7 +16,7 @@
           <% @cart_products.each do |cart_product| %>
           <tr>
             <td>
-              <%= image_tag cart_product.product.image, size:'100x100' %>
+              <%= image_tag cart_product.product.get_image_id, size:'100x100' %>
               <%= cart_product.product.name %>
             </td>
             <td><%= cart_product.product.add_tax_price %></td>

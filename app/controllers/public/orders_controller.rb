@@ -42,13 +42,14 @@ class Public::OrdersController < ApplicationController
 
     if @order.save
       @cart_products.each do |cart|
-      order_product = OrderProduct.new
-      order_product.product_id = cart.product_id
-      order_product.order_id = @order.id
-      order_product.amount = cart.amount
-      order_product.price = cart.product.add_tax_price
-      order_product.save
-    end
+        order_product = OrderProduct.new
+        order_product.product_id = cart.product_id
+        order_product.order_id = @order.id
+        order_product.amount = cart.amount
+        order_product.price = cart.product.add_tax_price
+        order_product.status = 0
+        order_product.save
+      end
 
     @cart_products.destroy_all
     redirect_to order_complete_path(@order.id)
