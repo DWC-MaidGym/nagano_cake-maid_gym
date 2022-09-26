@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_action :authenticate_admin!
   layout "admin_application"
 
   def new
@@ -9,8 +10,10 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+      flash[:notice] = "商品を登録しました"
       redirect_to admin_product_path(@product)
     else
+      flash[:notice] = "商品の登録に失敗しました"
       @genres = Genre.all
       @product = Product.new
       render :new
@@ -33,8 +36,10 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
+      flash[:notice] = "商品を更新しました"
       redirect_to admin_product_path(@product)
     else
+      flash[:notice] = "商品の更新に失敗しました"
       render :edit
     end
   end
