@@ -22,4 +22,5 @@ class Customer < ApplicationRecord
     validates :address, presence: true
     validates :telephone_number, presence: true
     validates :email, presence: true
+
 end
