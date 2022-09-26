@@ -37,7 +37,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @cart_products = current_customer.products
+    @cart_products = CartProduct.where(customer_id: current_customer)
 
     if @order.save
       @cart_products.each do |cart|
@@ -49,8 +49,8 @@ class Public::OrdersController < ApplicationController
       order_product.save
     end
 
-    @cart_items.destroy_all
-    redirect_to orders_done_path
+    @cart_products.destroy_all
+    redirect_to order_complete_path(@order.id)
     else
     @order = Order.new(order_params)
     render :new
@@ -70,8 +70,8 @@ class Public::OrdersController < ApplicationController
       @sum += order_product.sum_price
     end
     @shopping_cost = 800
-    @total = @sum + shopping_cost
-    
+    @total = @sum + @shopping_cost
+
   end
 
 

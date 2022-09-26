@@ -1,19 +1,45 @@
-<p>
-  ようこそ、ながのCAKEへ！<br>
-  このサイトは、ケーキ販売のECサイトになります。<br>
-  会員でない方も商品の閲覧はできますが、<br>
-  購入には会員登録が必要になります。
-</p>
-
-<div>
-  <h2>新着商品</h2>
-  <%= @products.each do |product| %>
-    <%= link_to do %>
-      <%= image_tag product.get_product_image, size: '50x50' %>
-      <%= product.name %>
-      <p>¥<%= product.price %></p>
-    <% end %>
-  <% end %>
+<div class="container">
+ <div class="row">
+  <div class="col-lg-2">
+  </div>
+  <div class="col-lg-7">
+   <table>
+    <tr>
+     <td>
+     </td>
+     <td>　　</td>
+     <td>
+      <p  class="small text-center">ようこそ、ながのCAKEへ！</p>
+      <p  class="small text-center">このサイトは、</p>
+      <p  class="small text-center">ケーキ販売のECサイトになります。</p>
+      <p  class="small text-center">会員でない方も商品の閲覧はできますが、</p>
+      <p  class="small text-center">購入には会員登録が必要になります。</p>
+     </td>
+    </tr>
+   </table>
+   <br><br><h4>　　<u>新着商品</u></h4>
+   <table>
+     <tr>
+      <% @products.each do |product| %>
+      <td>
+       <% if admin_signed_in? %>
+        <%= link_to admin_product_path(product.id) do %>
+        <%= image_tag product.image, size:'150x150' %><% end %>
+       <% else %>
+        <%= link_to product_path(product.id) do %>
+        <%= image_tag product.image, size:'150x150' %><% end %>
+       <% end %>
+       <br>
+       <p  class="text-center"><%= link_to product.name, product_path(product.id) %></p>
+       <p  class="text-center"><%= product.price %>円</p>
+      </td>
+      <td>　</td>
+      <% end %>
+      <td><%= link_to "全ての商品を見る >", products_path %></td>
+     </tr>
+    </table>
+   </div>
+   <div class="col-lg-3"></div>
+   </div>
+  </div>
 </div>
-
-<%= link_to "全ての商品を見る >" %>
