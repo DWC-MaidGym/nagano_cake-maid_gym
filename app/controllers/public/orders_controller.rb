@@ -39,6 +39,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @cart_products = CartProduct.where(customer_id: current_customer)
+    @order.status = 0
 
     if @order.save
       @cart_products.each do |cart|
@@ -47,15 +48,13 @@ class Public::OrdersController < ApplicationController
         order_product.order_id = @order.id
         order_product.amount = cart.amount
         order_product.price = cart.product.add_tax_price
-        order_product.status = 0
         order_product.save
       end
-
-    @cart_products.destroy_all
-    redirect_to order_complete_path(@order.id)
+      @cart_products.destroy_all
+      redirect_to order_complete_path(@order.id)
     else
-    @order = Order.new(order_params)
-    render :new
+      @order = Order.new(order_params)
+      render :new
     end
   end
 
@@ -78,7 +77,7 @@ class Public::OrdersController < ApplicationController
 
 
   def order_params
-  	params.require(:order).permit(:name, :address, :post_code, :shopping_cost,:total_payment,:payment_method, :status)
+  	params.require(:order).permit(:name, :address, :post_code, :shopping_cost, :total_payment, :payment_method)
   end
 
 end
