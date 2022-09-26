@@ -1,33 +1,36 @@
 <div class='container'>
-  <div class='row'>
-    <div class="col-lg-10 m-auto">
-      <h3 class="mx-auto", style="background-color:#eee; width:115px; margin:30px 0 30px 100px;"><b>商品一覧</b></h3>
-      <table class='table table-hover table-inverse'>
-        <thead>
-          <tr>
-            <th>商品ID</th>
-            <th>商品名</th>
-            <th>税抜価格</th>
-            <th>ジャンル</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @products.each do |product| %>
-            <tr>
-              <td><%= product.id %></td>
-              <td><%= link_to product.name,admin_product_path(product) %></td>
-              <td><%= product.price %></td>
-              <td><%= product.genre.name %></td>
-              <td><% if product.is_active? %>
-                <%= "販売中" %>
-              <% else %>
-                <%= "販売停止中" %>
-              <% end %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <div calss="row">
+      <h3 class="col-outo text-ccenter float-left test-box", style="background:#eeeeee;"><b>商品一覧</b></h3>
+  </div>
+  <div class="row float-right">
+    <div class="btn btn-link rounded-circle p-0 box-shadow-sm" style="width:2rem;height:2rem;">
+        <%= link_to "+" ,new_admin_product_path %>
     </div>
   </div>
+     <table class='table border-bottom border-ligth'>
+          <thead style="background:#eeeeee;">
+            <tr>
+              <th scope="col">商品ID</th>
+              <th scope="col">商品名</th>
+              <th scope="col">税抜価格</th>
+              <th scope="col">ジャンル</th>
+              <th scope="col">ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= product.id %></td>
+                <td><%= link_to product.name,admin_product_path(product) ,class:'border-bottom col-aut text-dark' %></td>
+                <td><%= product.price %></td>
+                <td><%= product.genre.name %></td>
+                <td><% if product.is_active? %>
+                      <p class="text-success">販売中</p>
+                    <% else %>
+                      <p class="text-black-50">販売停止中</p>
+                    <% end %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 </div>
