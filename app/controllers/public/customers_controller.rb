@@ -11,13 +11,13 @@ class Public::CustomersController < ApplicationController
   
   def confirm
     @customer = current_customer
-  end
+  end  
   
   def withdraw
   @customer = Customer.find(current_customer.id)
   @customer.update(is_deleted: true)
   reset_session
-  redirect_to customer_withdraw_path
+  redirect_to customer_confirm_path
   end
   
   def create
