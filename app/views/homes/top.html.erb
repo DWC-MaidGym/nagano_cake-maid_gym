@@ -24,10 +24,10 @@
       <td>
        <% if admin_signed_in? %>
         <%= link_to admin_product_path(product.id) do %>
-        <%= image_tag product.image, size:'150x150' %><% end %>
+        <%= image_tag product.get_image_id, size:'150x150' %><% end %>
        <% else %>
         <%= link_to product_path(product.id) do %>
-        <%= image_tag product.image, size:'150x150' %><% end %>
+        <%= image_tag product.get_image_id, size:'150x150' %><% end %>
        <% end %>
        <br>
        <p  class="text-center"><%= link_to product.name, product_path(product.id) %></p>

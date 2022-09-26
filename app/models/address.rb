@@ -9,5 +9,4 @@ class Address < ApplicationRecord
     def full_adresses
       post_code + address + name
     end
-
 end
