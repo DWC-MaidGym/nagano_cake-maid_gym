@@ -15,23 +15,27 @@ root to: 'homes#top'
     resources :customers, only: [:show, :edit, :update] do
       get 'confirm'
       patch 'withdraw'
+      patch 'edit'
+      
+    
     end
 
-
-    resources :cart_products, only: [:index, :update, :destroy, :create]
     delete '/cart_products/all_destroy' => 'cart_products#all_destroy', as: 'cart_products_all_destroy'
+    resources :cart_products, only: [:index, :update, :destroy, :create]
+
+
 
 
 
     resources :orders, only: [:index, :show, :create, :new] do
-      post 'confirm'
       get 'complete'
     end
+    post '/orders/confirm' => 'orders#confirm', as: "order_confirm"
 
     resources :products, only: [:index, :show]
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-
+  
   end
 
 
