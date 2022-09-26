@@ -1,3 +1,10 @@
 class Address < ApplicationRecord
-    has_many :customers, dependent: :destroy
+    
+  belongs_to :customer
+
+  def full_adresses
+      post_code + address + name
+  end
+  
+  
 end
