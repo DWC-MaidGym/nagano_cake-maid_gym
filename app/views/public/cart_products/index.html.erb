@@ -21,7 +21,7 @@
          <% @cart_products.each do |cart_product| %>
          <tr>
            <td>
-             <%= image_tag cart_product.product.image, size:'100x100' %>
+             <%= image_tag cart_product.product.get_image_id, size:'100x100' %>
              <%= cart_product.product.name %>
            </td>
            <td>¥<%= cart_product.product.add_tax_price%></td>
@@ -41,7 +41,7 @@
       <table class="table-bordered float-right col-lg-3 offset-md-5 mt-3">
         <tr>
           <th style="background-color:#F5F5F5;">合計金額</th>
-          <td>¥<%= @sum %></td>
+          <td>¥<%= @total %></td>
         </tr>
       </table>
 
