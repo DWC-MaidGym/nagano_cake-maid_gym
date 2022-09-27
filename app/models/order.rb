@@ -24,4 +24,12 @@ class Order < ApplicationRecord
       products = OrderProduct.where(order_id: self.id)
       products.sum(:amount)
     end
+
+    after_update do
+      if self.status == "confirm_payment"
+        self.order_products.each {|order_product|
+        order_product.update(order_status: 1)
+        }
+      end
+    end
 end

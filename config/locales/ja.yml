@@ -202,4 +202,5 @@ devise:
   sessions:
     admin:
       signed_out: "サインアウト"
-    
+      signed_in: "サインアウト"
+
