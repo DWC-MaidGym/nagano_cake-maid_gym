@@ -9,15 +9,9 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find(params[:id])
-    @order.update(order_params)
-
-    
-    if params[:order][:status] == 1
-      @order.order_products.update(order_status: 1)
-    end
-
-    redirect_to request.referer
+      @order = Order.find(params[:id])
+      @order.update(order_params)
+      redirect_to request.referer
 
   end
 
