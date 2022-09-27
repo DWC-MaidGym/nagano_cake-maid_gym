@@ -2,8 +2,8 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   
   def edit
-    @customer = current_customer
-  end  
+    @customer = Customer.find(params[:id])
+  end
   
   def show
     @customer = current_customer
@@ -11,6 +11,13 @@ class Public::CustomersController < ApplicationController
   
   def confirm
     @customer = current_customer
+  end
+  
+  def withdraw
+  @customer = Customer.find(current_customer.id)
+  @customer.update(is_deleted: true)
+  reset_session
+  redirect_to customer_withdraw_path
   end
   
   def create

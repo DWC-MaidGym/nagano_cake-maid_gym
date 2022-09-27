@@ -19,4 +19,9 @@ class Order < ApplicationRecord
     def sum_price
       self.product.add_tax_price*self.amount
     end
+
+    def sum_amount
+      products = OrderProduct.where(order_id: self.id)
+      products.sum(:amount)
+    end
 end

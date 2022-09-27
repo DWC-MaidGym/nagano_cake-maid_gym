@@ -6,16 +6,14 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_products = @order.order_products
     @total = 0
-    @order_product = OrderProduct.find(params[:id])
   end
 
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
 
-    # [:order][:status]→orderの中のstatus
-    if params[:order][:status] == "confirm_payment"
-      # making_statusを製作待ちに更新
+    
+    if params[:order][:status] == 1
       @order.order_products.update(order_status: 1)
     end
 
