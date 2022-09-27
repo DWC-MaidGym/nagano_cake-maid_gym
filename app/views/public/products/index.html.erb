@@ -1,0 +1,29 @@
+<div class="container">
+  <div calss="row align-items-start">
+    <div class="form-inline text-left">
+      <h3><b>商品一覧</b></h3>
+      <h5>(全<%= @products.where(is_active: "true").count %>件)</h5>
+    </div>
+    <div class="row row-cols-4">
+    <% @products.each do |product| %>
+        <% if product.is_active? %>
+        <div class="col">
+          <div  class="row flex-column bd-highlight mb-3">
+            <div class="p-2 bd-highlight mx-auto">
+              <%= link_to product_path(product) do %>
+                <%= image_tag product.get_image_id, size: '220x150' %>
+              <% end %>
+            </div>
+            <div class="p-2 bd-highlight text-center">
+              <%= link_to product.name,product_path(product.id) %>
+            </div>
+            <div class="p-2 bd-highlight text-center">
+              <p>¥<%= product.add_tax_price %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
