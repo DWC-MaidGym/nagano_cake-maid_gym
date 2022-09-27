@@ -15,17 +15,14 @@
       <div class="lead">お届け先</div>
 
         <%= f.radio_button :selected_address, 0 %>
-        <div>
-          <%= f.label :ご自身の住所 %><br>
-          〒<%= current_customer.post_code %>
-          <%= current_customer.address %><br>
-          <%= current_customer.full_name %><br>
-        </div>
+        <%= f.label :ご自身の住所 %><br>
+        〒<%= current_customer.post_code %>
+        <%= current_customer.address %><br>
+        <%= current_customer.full_name %><br>
+
         <%= f.radio_button :selected_address, 1 %>
-        <div>
-          <%= f.label :登録済住所から選択 %><br>
-          <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %>
-        </div>
+        <%= f.label :登録済住所から選択 %><br>
+        <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display), :prompt => "選択してください" %>
 
       <div><%= f.radio_button :selected_address, 2 %>新規住所登録</div>
 
