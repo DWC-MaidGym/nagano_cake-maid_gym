@@ -27,12 +27,12 @@ class Admin::ProductsController < ApplicationController
   def index
     @products = Product.all
   end
-  
+
   def edit
     @product = Product.find(params[:id])
     @genres = Genre.all
   end
-  
+
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
@@ -43,7 +43,7 @@ class Admin::ProductsController < ApplicationController
       render :edit
     end
   end
-  
+
   private
 
   def product_params

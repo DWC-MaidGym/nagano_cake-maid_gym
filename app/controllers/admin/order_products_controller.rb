@@ -6,9 +6,8 @@ class Admin::OrderProductsController < ApplicationController
     @order = @order_product.order
     @order_product.update(order_params)
 
-    # [:order][:status]→orderの中のstatus
-    if @order.status == "confirm_payment"
-      # making_statusを製作待ちに更新
+    
+    if @order.status == 1
       @order_product.update(order_status: 1)
     end
 
