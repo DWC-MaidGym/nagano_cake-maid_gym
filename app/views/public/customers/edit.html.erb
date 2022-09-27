@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-9 mx-auto">
+    <div class="col-10 mx-auto">
       <h4><strong>会員情報編集</strong></h4>
 
       <%= form_with model: @customer, method: :patch, local:true do |f| %>
@@ -56,7 +56,7 @@
     </div>
       <div class="actions mt-3 text-center">
         <%= f.submit '編集内容を保存', class: "btn btn-success mr-5" %>
-        <%= link_to customer_confirm_path(@customer), class: "ml-5" do %>
+        <%= link_to customer_confirm_url(@customer), class: "ml-5" do %>
          <button type="button" class="btn btn-danger">退会する</button>
         <% end %>
       </div>
