@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark text-white">
+
+    <%= link_to root_path do %>
+    <%= image_tag 'logo (1).png', :size =>'170x100' %>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <% if admin_signed_in? %>
+          <li>
+            <%= link_to "商品一覧", admin_products_path, class: 'nav-link text-light m-2' %>
+          </li>
+          <li>
+            <%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-light m-2' %>
+          </li>
+          <li>
+            <%= link_to "注文履歴一覧", admin_path, class: 'nav-link text-light m-2' %>
+          </li>
+          <li></li>
+            <%= link_to "ジャンル", admin_genres_path, class: 'nav-link text-light m-2' %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link text-light m-2', method: :delete %>
+          </li>
+        <% elsif customer_signed_in? %>
+
+          <p>ようこそ、<%= current_customer.full_name %>さん！</p>
+          <li>
+            <%= link_to "マイページ", customer_path(current_customer), class: 'nav-link text-light m-2' %>
+          </li>
+          <li>
+            <%= link_to "商品一覧", products_path, class: 'nav-link text-light m-2' %>
+          </li>
+          <li>
+            <%= link_to "カート", cart_products_path, class: 'nav-link text-light m-2' %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, class: 'nav-link text-light m-2', method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "About", about_path, class: 'nav-link text-light m-2' %>
+          </li>
+          <li>
+            <%= link_to "商品一覧", products_path, class: 'nav-link text-light m-2' %>
+          </li>
+          <li>
+            <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-light m-2' %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light m-2' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
