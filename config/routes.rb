@@ -15,6 +15,7 @@ root to: 'homes#top'
     resources :customers, only: [:show, :edit, :update] do
       get 'confirm'
       patch 'withdraw'
+
     end
 
     delete '/cart_products/all_destroy' => 'cart_products#all_destroy', as: 'cart_products_all_destroy'
@@ -32,7 +33,7 @@ root to: 'homes#top'
     resources :products, only: [:index, :show]
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  
+
   end
 
 
@@ -45,6 +46,8 @@ root to: 'homes#top'
   namespace :admin do
     get '' => 'homes#top'
 
+    patch 'order_products' => 'order_products#update'
+
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
 
     resources :genres, only: [:index, :create, :edit, :update]
@@ -53,7 +56,7 @@ root to: 'homes#top'
 
     resources :orders, only: [:show, :update]
 
-    patch 'order_products' => 'order_products#update'
+     resources :order_products, only: [:update]
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

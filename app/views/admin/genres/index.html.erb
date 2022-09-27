@@ -1,9 +1,10 @@
+<%= flash[:notice] %>
 <div class='container mt-4'>
     <h3 class="ml-5", style="background-color:#eee; width:255px; margin:30px 0 30px 100px;"><b>ジャンル一覧・追加</b></h3>
   <div class='row form-inline my-4'>
     ジャンル名
     <div class='col-m-7'>
-      <%= form_with model: @genre_new, url: admin_genres_path, local:true do |f| %>
+      <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
         <div class="form-group col">
           <%= f.text_field :name, class: 'form-control book_title' %>
         </div>

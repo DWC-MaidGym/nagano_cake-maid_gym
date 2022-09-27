@@ -2,7 +2,11 @@ class Public::OrdersController < ApplicationController
 
 
   def new
-    @order = Order.new
+    if CartProduct.exists?(customer_id: current_customer.id)
+      @order = Order.new
+    else
+      redirect_to cart_products_path
+    end
   end
 
   def confirm
@@ -16,16 +20,16 @@ class Public::OrdersController < ApplicationController
     @shopping_cost = 800
     @total = @sum + @shopping_cost
 
-    if params[:order][:selected_address] == "customer_address"
+    if params[:order][:selected_address] == "0"
       @order.post_code = current_customer.post_code
       @order.name = current_customer.full_name
       @order.address = current_customer.address
-    elsif params[:order][:selected_address] == "shopping_address"
+    elsif params[:order][:selected_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.post_code = @address.post_code
       @order.address = @address.address
       @order.name = @address.name
-    elsif params[:order][:selected_address] == "new_address"
+    elsif params[:order][:selected_address] == "2"
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
@@ -39,22 +43,22 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @cart_products = CartProduct.where(customer_id: current_customer)
+    @order.status = 0
 
     if @order.save
       @cart_products.each do |cart|
-      order_product = OrderProduct.new
-      order_product.product_id = cart.product_id
-      order_product.order_id = @order.id
-      order_product.amount = cart.amount
-      order_product.price = cart.product.add_tax_price
-      order_product.save
-    end
-
-    @cart_products.destroy_all
-    redirect_to order_complete_path(@order.id)
+        order_product = OrderProduct.new
+        order_product.product_id = cart.product_id
+        order_product.order_id = @order.id
+        order_product.amount = cart.amount
+        order_product.price = cart.product.add_tax_price
+        order_product.save
+      end
+      @cart_products.destroy_all
+      redirect_to order_complete_path(@order.id)
     else
-    @order = Order.new(order_params)
-    render :new
+      @order = Order.new(order_params)
+      render :new
     end
   end
 
@@ -77,7 +81,7 @@ class Public::OrdersController < ApplicationController
 
 
   def order_params
-  	params.require(:order).permit(:name, :address, :post_code, :shopping_cost,:total_payment,:payment_method, :status)
+  	params.require(:order).permit(:name, :address, :post_code, :shopping_cost, :total_payment, :payment_method)
   end
 
 end
