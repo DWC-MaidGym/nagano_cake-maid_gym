@@ -2,7 +2,11 @@ class Public::OrdersController < ApplicationController
 
 
   def new
-    @order = Order.new
+    if CartProduct.exists?(customer_id: current_customer.id)
+      @order = Order.new
+    else
+      redirect_to cart_products_path
+    end
   end
 
   def confirm
