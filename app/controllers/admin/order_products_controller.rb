@@ -5,6 +5,11 @@ class Admin::OrderProductsController < ApplicationController
     @order_product = OrderProduct.find(params[:id])
     @order = @order_product.order
     @order_product.update(order_params)
+    
+    
+    if @order.status == 1
+      @order_product.update(order_status: 1)
+    end
 
     redirect_to request.referer
 
