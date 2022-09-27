@@ -198,4 +198,9 @@ ja:
         wait_make: "製作待ち"
         making: "製作中"
         make_end: "製作完了"
-    
+devise:
+  sessions:
+    admin:
+      signed_out: "サインアウト"
+      signed_in: "サインアウト"
+
