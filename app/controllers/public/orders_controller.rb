@@ -16,16 +16,16 @@ class Public::OrdersController < ApplicationController
     @shopping_cost = 800
     @total = @sum + @shopping_cost
 
-    if params[:order][:selected_address] == "customer_address"
+    if params[:order][:selected_address] == "0"
       @order.post_code = current_customer.post_code
       @order.name = current_customer.full_name
       @order.address = current_customer.address
-    elsif params[:order][:selected_address] == "shopping_address"
+    elsif params[:order][:selected_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.post_code = @address.post_code
       @order.address = @address.address
       @order.name = @address.name
-    elsif params[:order][:selected_address] == "new_address"
+    elsif params[:order][:selected_address] == "2"
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
