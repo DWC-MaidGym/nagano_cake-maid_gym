@@ -13,16 +13,18 @@
 
     <div class="form-group mt-4">
       <div class="lead">お届け先</div>
-
-        <%= f.radio_button :selected_address, 'customer_address' %>
-        <%= f.label :ご自身の住所 %><br>
-        〒<%= current_customer.post_code %>
-        <%= current_customer.address %><br>
-        <%= current_customer.full_name %><br>
-        <%= f.radio_button :selected_address, 'shopping_address' %>
-        <%= f.label :登録済住所から選択 %><br>
-        <%= f.select :selected_address, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %>
-
+        <div>
+          <%= f.radio_button :selected_address, 'customer_address' %>
+          <%= f.label :ご自身の住所 %><br>
+          〒<%= current_customer.post_code %>
+          <%= current_customer.address %><br>
+          <%= current_customer.full_name %><br>
+        </div>
+        <div>
+          <%= f.radio_button :selected_address, 'shopping_address' %>
+          <%= f.label :登録済住所から選択 %><br>
+          <%= f.select :selected_address, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %>
+        </div>
 
       <div><%= f.radio_button :selected_address, 'new_adress' %>新規住所登録</div>
 
