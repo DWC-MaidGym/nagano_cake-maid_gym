@@ -3,18 +3,18 @@
   <div class="col-lg-2">
   </div>
   <div class="col-lg-7">
-   <%= image_tag 'musclecupcake.jpg', style:"position: relative;" %>
+   <%= image_tag 'cake.png', class:"mx-auto", style:"position: relative;top:10px;",:size =>'700x400' %>
    <table>
     <tr>
      <td>
      </td>
      <td>　　</td>
-     <td style="position:absolute; top:125px; left:150px; color:#FFF; background-color:rgba(0,0,0,0.3);">
-      <p  class="small text-center">ようこそ、ながのCAKEへ！</p>
-      <p  class="small text-center">このサイトは、</p>
-      <p  class="small text-center">ケーキ販売のECサイトになります。</p>
-      <p  class="small text-center">会員でない方も商品の閲覧はできますが、</p>
-      <p  class="small text-center">購入には会員登録が必要になります。</p>
+     <td style="position:absolute; top:200px; left:30px; color:#000000;	background:rgba(245,245,245,0.7);">
+      <p  class="small text-left">ようこそ、ながのCAKEへ！</p>
+      <p  class="small text-left">このサイトは、</p>
+      <p  class="small text-left">ケーキ販売のECサイトになります。</p>
+      <p  class="small text-left">会員でない方も商品の閲覧はできますが、</p>
+      <p  class="small text-left">購入には会員登録が必要になります。</p>
      </td>
     </tr>
    </table>
@@ -35,6 +35,7 @@
        <p  class="text-center"><%= product.price %>円</p>
       </td>
       <td>　</td>
+      <tr>
       <% end %>
       <td><%= link_to "全ての商品を見る >", products_path %></td>
      </tr>
